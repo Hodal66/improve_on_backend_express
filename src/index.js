@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const path = require("path");
-
+require('colors');
 
 app.get("/", (req, res) => {
   res.send("This is___________ the home page of the project");
@@ -29,10 +29,19 @@ app.get('/ab+cd',(req,res)=>{
 app.get(/a/,(req,res)=>{
   res.send("This routes match with any route that contain a inside in it")
 })
-console.log("Twabonanye byakunze!!");
-console.log("Ndabona ibintu ari sawa cyane!!!")
+console.log("Twabonanye byakunze!!".bgBlue);
+console.log("Ndabona ibintu ari sawa cyane!!!".rainbow);
 
-
+app.get('/user/:userId',(req,res)=>{
+  res.send(req.params);
+  let myUserId = req.params;
+  if(myUserId.userId == 500){
+    console.log("Murakoze cyane ndabona duhuza");
+  }else{
+    console.log("Iyo route ntabwo ihura na 500rwf");
+  }
+  console.log("the request from parameter is ",myUserId.userId);
+})
 
 app.listen(port, () => {
   console.log(`Server is Running!!! on : ${port}`);
